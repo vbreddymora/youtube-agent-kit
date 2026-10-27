@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "video-automate"
+version = "1.0.0"
+description = "Universal Multi-Agent AI Toolkit and Video Automation Engine for YouTube Creators"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Vijay", email = "vijay@users.noreply.github.com"}
+]
+keywords = [
+    "youtube",
+    "ai",
+    "video-automation",
+    "mcp",
+    "agent-skills",
+    "shorts",
+    "seo",
+    "cursor",
+    "antigravity",
+    "claude",
+    "chatgpt"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Multimedia :: Video",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "edge-tts>=7.0.0",
+    "imageio-ffmpeg>=0.5.0",
+    "pillow>=10.0.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/Vijaymvtrp/video_automate"
+Repository = "https://github.com/Vijaymvtrp/video_automate.git"
+Issues = "https://github.com/Vijaymvtrp/video_automate/issues"

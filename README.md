@@ -6,7 +6,9 @@
 [![Protocol](https://img.shields.io/badge/MCP-Compatible-orange.svg)](https://modelcontextprotocol.io/)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)]()
 
-> A universal, multi-agent AI system for YouTube creators and video automation. Designed to research, script, validate, optimize, and produce YouTube videos across **Google Antigravity, Claude Code, Cursor, Gemini, OpenAI Codex**, and standard chat interfaces without vendor lock-in.
+> A universal, multi-agent AI system for YouTube creators and video automation. Designed to research, script, validate, optimize, and produce YouTube videos across **Google Antigravity, Claude Code, Cursor, Gemini, OpenAI Codex, ChatGPT, Grok**, and standard chat interfaces without vendor lock-in.
+
+📖 **[Read the Complete Universal AI Integration Guide (Docs)](docs/UNIVERSAL_AI_INTEGRATION_GUIDE.md)** for step-by-step setup in ChatGPT, Cursor, Antigravity, Grok, and Claude!
 
 ---
 
