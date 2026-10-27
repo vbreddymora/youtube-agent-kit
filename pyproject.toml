@@ -3,14 +3,14 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "video-automate"
+name = "youtube-agent-kit"
 version = "1.0.0"
 description = "Universal Multi-Agent AI Toolkit and Video Automation Engine for YouTube Creators"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [
-    {name = "Vijay", email = "vijay@users.noreply.github.com"}
+    {name = "vbreddymora", email = "vbreddymora@users.noreply.github.com"}
 ]
 keywords = [
     "youtube",
@@ -39,6 +39,6 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Vijaymvtrp/video_automate"
-Repository = "https://github.com/Vijaymvtrp/video_automate.git"
-Issues = "https://github.com/Vijaymvtrp/video_automate/issues"
+Homepage = "https://github.com/vbreddymora/youtube-agent-kit"
+Repository = "https://github.com/vbreddymora/youtube-agent-kit.git"
+Issues = "https://github.com/vbreddymora/youtube-agent-kit/issues"

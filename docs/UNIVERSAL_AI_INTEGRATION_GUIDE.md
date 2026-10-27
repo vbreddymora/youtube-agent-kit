@@ -1,6 +1,6 @@
-# 🌐 Universal AI Integration Guide for `video_automate`
+# 🌐 Universal AI Integration Guide for `youtube-agent-kit`
 
-> How to connect, install, and execute the **Video Automate & YouTube Creator Multi-Agent Toolkit** across every major AI platform: **Google Antigravity, Cursor, Claude, ChatGPT, Grok, Gemini, Windsurf, Cline**, and API automation tools.
+> How to connect, install, and execute the **YouTube Agent Kit Multi-Agent Toolkit** across every major AI platform: **Google Antigravity, Cursor, Claude, ChatGPT, Grok, Gemini, Windsurf, Cline**, and API automation tools.
 
 ---
 
@@ -172,7 +172,7 @@ Add to your `cline_mcp_settings.json` or Windsurf MCP panel:
 To install this toolkit as a global Python module on any machine:
 
 ```bash
-pip install git+https://github.com/Vijaymvtrp/video_automate.git
+pip install git+https://github.com/vbreddymora/youtube-agent-kit.git
 ```
 
 ### Run Automated Short Video Generation:

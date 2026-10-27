@@ -1,4 +1,4 @@
-# 🚀 Video Automate: Universal Multi-Agent YouTube Creator Toolkit
+# 🚀 YouTube Agent Kit: Universal Multi-Agent AI Toolkit
 
 [![Tests](https://img.shields.io/badge/Tests-13%20Passed-brightgreen.svg)]()
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
