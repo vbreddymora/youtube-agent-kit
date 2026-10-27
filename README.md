@@ -52,14 +52,20 @@ graph LR
 
 ## 🎯 Supported AI Tools & Environments
 
+<div align="center">
+  <img src="docs/assets/supported_ai_tools.jpg" alt="Supported AI Tools Compatibility Banner" width="100%" />
+</div>
+
+<br/>
+
 <p align="center">
-  <a href="#1--if-you-use-chatgpt-web--mobile"><img src="https://img.shields.io/badge/ChatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white" alt="ChatGPT" height="36" /></a>
-  <a href="#2--if-you-use-cursor-ide"><img src="https://img.shields.io/badge/Cursor-000000?style=for-the-badge&logo=cursor&logoColor=white" alt="Cursor" height="36" /></a>
-  <a href="#4--if-you-use-claude-claude-code--claude-desktop"><img src="https://img.shields.io/badge/Claude-D97706?style=for-the-badge&logo=anthropic&logoColor=white" alt="Claude" height="36" /></a>
-  <a href="#3--if-you-use-google-antigravity"><img src="https://img.shields.io/badge/Google%20Antigravity-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Google Antigravity" height="36" /></a>
-  <a href="#5--if-you-use-grok-x--web"><img src="https://img.shields.io/badge/Grok%20(X)-000000?style=for-the-badge&logo=x&logoColor=white" alt="Grok" height="36" /></a>
+  <a href="#1-if-you-use-chatgpt-"><img src="https://img.shields.io/badge/ChatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white" alt="ChatGPT" height="36" /></a>
+  <a href="#2-if-you-use-cursor-ide-"><img src="https://img.shields.io/badge/Cursor-000000?style=for-the-badge&logo=cursor&logoColor=white" alt="Cursor" height="36" /></a>
+  <a href="#4-if-you-use-claude-"><img src="https://img.shields.io/badge/Claude-D97706?style=for-the-badge&logo=anthropic&logoColor=white" alt="Claude" height="36" /></a>
+  <a href="#3-if-you-use-google-antigravity-"><img src="https://img.shields.io/badge/Google%20Antigravity-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Google Antigravity" height="36" /></a>
+  <a href="#5-if-you-use-grok-"><img src="https://img.shields.io/badge/Grok%20(X)-000000?style=for-the-badge&logo=x&logoColor=white" alt="Grok" height="36" /></a>
   <a href="#supported-ai-tools"><img src="https://img.shields.io/badge/Google%20Gemini-8E75B2?style=for-the-badge&logo=googlegemini&logoColor=white" alt="Gemini" height="36" /></a>
-  <a href="#6--if-you-use-windsurf--cline--roo-code"><img src="https://img.shields.io/badge/Windsurf-09B6A2?style=for-the-badge&logo=codeium&logoColor=white" alt="Windsurf" height="36" /></a>
+  <a href="#6-if-you-use-windsurf--cline--roo-code-"><img src="https://img.shields.io/badge/Windsurf-09B6A2?style=for-the-badge&logo=codeium&logoColor=white" alt="Windsurf" height="36" /></a>
 </p>
 
 Click any tool above to jump straight to its setup guide:
