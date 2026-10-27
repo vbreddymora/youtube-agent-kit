@@ -1,4 +1,7 @@
-# 🚀 YouTube Agent Kit: Universal Multi-Agent AI Toolkit
+# 🚀 YouTube Agent Kit
+
+> **The Universal Multi-Agent AI Operating System for YouTube Creators & Video Automation.**  
+> Turn simple video ideas into viral retention hooks, full scripts, optimized SEO metadata, and rendered vertical MP4 videos across **any AI tool** — with zero vendor lock-in.
 
 [![Tests](https://img.shields.io/badge/Tests-13%20Passed-brightgreen.svg)]()
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -6,212 +9,146 @@
 [![Protocol](https://img.shields.io/badge/MCP-Compatible-orange.svg)](https://modelcontextprotocol.io/)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)]()
 
-> A universal, open-standard, multi-agent AI toolkit for YouTube creators and video automation. Designed to research, script, validate, optimize, and produce YouTube videos seamlessly across **Google Antigravity, Cursor IDE, Claude, ChatGPT, Grok, Gemini, Windsurf, Cline**, and developer APIs without vendor lock-in.
+---
+
+## ⚡ 30-Second Overview: What is this?
+
+Most creators waste **10+ hours every week** on painful manual tasks:
+- *"What should my first 3 seconds be so viewers don't swipe away?"*
+- *"How do I format titles and chapters without getting cut off on mobile screens?"*
+- *"How do I find outlier competitor videos that actually get views?"*
+
+**YouTube Agent Kit** solves this by providing **14 autonomous AI Agent Skills**, a **Deterministic Validator**, a **live MCP Server**, and a **Headless MP4 Video Engine** that plug directly into **whatever AI you already use** (ChatGPT, Cursor, Antigravity, Claude, Grok, or Terminal).
 
 ---
 
-## 📑 Table of Contents
-
-1. [System Architecture](#-system-architecture)
-2. [End-to-End Creator Workflow Flowchart](#-end-to-end-creator-workflow)
-3. [How to Access in Every AI Tool](#-how-to-access-in-every-ai-tool)
-   - [Google Antigravity](#1-google-antigravity)
-   - [Cursor IDE](#2-cursor-ide)
-   - [ChatGPT (Web & Custom GPTs)](#3-chatgpt-web--custom-gpts)
-   - [Claude (Code & Desktop)](#4-claude-claude-code--desktop)
-   - [Grok (X / Web)](#5-grok-x--web)
-   - [Windsurf / Cline / Roo Code](#6-windsurf--cline--roo-code)
-   - [Python CLI / Global Package](#7-python-cli--global-package)
-4. [The 14 Canonical Agent Skills](#-the-14-canonical-agent-skills)
-5. [Autonomous Video Generation & Testing](#-autonomous-video-generation--testing)
-6. [Local Deterministic Validation](#-local-deterministic-validation)
-7. [Security & Quota Management](#-security--quota-management)
-8. [License](#-license)
-
----
-
-## 🏛️ System Architecture
+## 🗺️ How It Works (Visual Pipeline)
 
 ```mermaid
-graph TD
-    User([👤 YouTube Creator / Developer]) --> Clients
-
-    subgraph Clients ["Supported AI Environments"]
-        AGY["🟣 Google Antigravity"]
-        CUR["⚡ Cursor IDE"]
-        CLD["🟧 Claude Code / Desktop"]
-        GPT["🟢 ChatGPT / Custom GPT"]
-        GRK["🦅 Grok / X"]
-        WND["🌊 Windsurf / Cline"]
+graph LR
+    A["💡 Raw Idea / Topic"] --> B["🧠 YouTube Agent Kit<br>(14 AI Skills)"]
+    
+    subgraph Engine ["What the Agent Produces"]
+        B --> C["🎣 5 Psychological Hooks<br>(0-3s Stop-Scroll)"]
+        B --> D["📝 60s Retention Script<br>(Cuts Every 3-5s)"]
+        B --> E["🔍 100% Validated SEO<br>(Title, Chapters, Tags)"]
     end
-
-    Clients --> Gateway{Integration Layer}
-
-    Gateway -->|Native Agent Protocol| AGENTS["📜 AGENTS.md & .cursorrules"]
-    Gateway -->|Model Context Protocol| MCP["🔌 Built-in MCP Server (stdio)"]
-    Gateway -->|Chat Fallbacks| PROMPTS["📋 Portable Prompts (Markdown)"]
-
-    AGENTS --> Skills
-    MCP --> Skills
-    PROMPTS --> Skills
-
-    subgraph Skills ["14 Canonical Open Agent Skills (skills/*)"]
-        S1["🎯 Channel Audit"]
-        S2["🔍 Video SEO"]
-        S3["📝 Retention Scripting"]
-        S4["🎣 5 Psychological Hooks"]
-        S5["🎨 Thumbnail Planning"]
-        S6["📱 Shorts Optimization"]
-        S7["📊 Analytics & Outliers"]
+    
+    C --> F["🎬 Automated Media Engine"]
+    D --> F
+    
+    subgraph Render ["Headless Production"]
+        F --> G["🎙️ Studio Neural Voiceover<br>(Edge-TTS / Christopher)"]
+        F --> H["📱 1080x1920 MP4 Video<br>(Burned Subtitles + B-Roll)"]
     end
-
-    Skills --> Execution["⚙️ Reusable Execution Layer"]
-
-    subgraph Execution ["Deterministic Tools & Engines (scripts/*)"]
-        VLD["🛡️ validate_metadata.py (Zero-dependency)"]
-        QTA["⏱️ quota_tracker.py (10K units cap)"]
-        TTS["🎙️ Neural Edge-TTS (Human Audio)"]
-        MP4["🎬 FFmpeg 1080x1920 Video Renderer"]
-        API["📡 YouTube Data API v3 & yt-dlp"]
-    end
-
-    Execution --> Output([🚀 Production Ready Video & Upload Package])
+    
+    E --> I["🚀 1-Click Publish to YouTube"]
+    H --> I
 ```
 
 ---
 
-## 🔄 End-to-End Creator Workflow
+## 🎯 Choose Your AI Tool: How to Access (Step-by-Step)
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Creator as 👤 Creator / AI Agent
-    participant Skills as 🧠 Skills Engine
-    participant Scripts as 🛡️ Validator & Tools
-    participant Renderer as 🎬 Video & Audio Engine
-    participant YouTube as 📺 YouTube Platform
+Select the tool you use below for crystal-clear, zero-confusion setup:
 
-    Creator->>Skills: 1. Input Video Idea / Topic
-    Skills->>Skills: 2. Generate 5 Psychological Hooks (0-3s retention)
-    Skills->>Skills: 3. Write Retention Script & Visual Scene Cues
-    Skills->>Skills: 4. Generate 3 Title Variants, Description & Chapters
-    Skills->>Scripts: 5. Pass Metadata to Validator
-    Scripts-->>Skills: 6. 100% PASS (Zero character caps or syntax issues)
-    Skills->>Renderer: 7. Trigger Neural TTS Voiceover & FFmpeg Renderer
-    Renderer-->>Creator: 8. Export 1080x1920 Vertical MP4 + Clean Metadata
-    Creator->>YouTube: 9. Publish Production-Ready Content
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│                     CHOOSE YOUR AI ENVIRONMENT                          │
+├───────────────────┬───────────────────┬───────────────────┬─────────────┤
+│  🤖 ChatGPT       │  ⚡ Cursor IDE    │  🟣 Antigravity   │  🟧 Claude  │
+│  (Custom GPT/Web) │  (Composer / MCP) │  (Native Skills)  │  (CLI/Code) │
+└───────────────────┴───────────────────┴───────────────────┴─────────────┘
 ```
 
 ---
 
-## 🔌 How to Access in Every AI Tool
+### 1. 🤖 If you use ChatGPT (Web & Mobile)
 
-### 1. 🟣 Google Antigravity
+Standard ChatGPT cannot read local files directly. You have two easy ways to use this toolkit:
 
-Antigravity natively discovers Agent Skills conforming to the open [Agent Skills specification](https://agentskills.io/).
+#### Way A: Create Your Own Custom YouTube Copilot GPT (Best Experience ⭐)
+1. Go to [ChatGPT](https://chatgpt.com) ➔ Click **Explore GPTs** (left sidebar) ➔ Click **+ Create** (top right).
+2. Go to the **Configure** tab:
+   - **Name:** `YouTube Agent Kit Copilot`
+   - **Description:** `Universal AI Copilot for YouTube SEO, Hooks, and Video Scripts.`
+3. In the **Instructions** box:
+   - Open [`AGENTS.md`](AGENTS.md) in this repo, copy everything, and paste it into ChatGPT's Instructions box.
+4. Under **Knowledge**:
+   - Click **Upload files** and select these key files from this repository:
+     - `skills/hook-generation/SKILL.md`
+     - `skills/video-seo/SKILL.md`
+     - `skills/shorts-optimization/SKILL.md`
+     - `skills/script-writing/SKILL.md`
+     - `references/algorithm-guide.md`
+     - `references/retention-scripting-guide.md`
+5. Click **Save** (top right) ➔ Select **Only me** (or Public).
+6. **Done!** You now have a private, permanent YouTube Strategist in ChatGPT on web and mobile app.
 
-* **Workspace Setup:** Open this repository folder in Antigravity. It automatically reads [`AGENTS.md`](AGENTS.md).
-* **MCP Integration:** Add to your Antigravity MCP settings (`mcp_config.json`):
-  ```json
-  {
-    "mcpServers": {
-      "youtube-agent-kit": {
-        "command": "python",
-        "args": ["d:/youtube-skills-ai/mcp-server/server.py"],
-        "env": {
-          "YOUTUBE_API_KEY": "YOUR_API_KEY_HERE"
-        }
-      }
-    }
-  }
-  ```
-* **Prompt Example:**
-  > *"Use the `hook-generation` skill to write 5 opening hooks for an AI automation tutorial."*
-
----
-
-### 2. ⚡ Cursor IDE
-
-Cursor uses `.cursorrules` and standard Model Context Protocol.
-
-* **Configuration:** Preconfigured [`.cursorrules`](adapters/cursor/.cursorrules) is in the root directory.
-* **Register MCP Server:**
-  1. Go to **Cursor Settings ➔ Features ➔ MCP**.
-  2. Click **Add New MCP Server**:
-     - **Name:** `youtube-agent-kit`
-     - **Command:** `python d:/youtube-skills-ai/mcp-server/server.py`
-     - **Environment:** `YOUTUBE_API_KEY=YOUR_KEY_HERE`
-* **Prompt Example in Composer (`Ctrl+I` / `Cmd+I`):**
-  > *"@AGENTS.md Run video-seo for our upcoming video and validate character limits."*
+#### Way B: Instant Copy-Paste Prompts (Zero Setup)
+Don't want to create a GPT? Simply open our [`portable-prompts/`](portable-prompts/) folder:
+- Copy [`portable-prompts/hook-generation.md`](portable-prompts/hook-generation.md) for viral openings.
+- Copy [`portable-prompts/video-seo.md`](portable-prompts/video-seo.md) for metadata & descriptions.
+- Paste directly into any normal ChatGPT conversation along with your topic!
 
 ---
 
-### 3. 🤖 ChatGPT (Web & Custom GPTs)
+### 2. ⚡ If you use Cursor IDE
 
-Standard ChatGPT cannot run local code directly, but you can give it permanent access:
+Cursor integrates directly with our repository rules and live Model Context Protocol (MCP) server.
 
-#### Method A: Create a Custom YouTube Creator GPT (Recommended ⭐)
-1. Open [ChatGPT](https://chatgpt.com) ➔ **Explore GPTs** ➔ **Create**.
-2. **Name:** `YouTube Agent Kit Copilot`
-3. **Instructions:** Copy the entire text of [`AGENTS.md`](AGENTS.md) and paste it into the Instructions box.
-4. **Knowledge Files:** Upload the markdown files from:
-   - `skills/video-seo/SKILL.md`
-   - `skills/hook-generation/SKILL.md`
-   - `skills/shorts-optimization/SKILL.md`
-   - `skills/script-writing/SKILL.md`
-   - `references/algorithm-guide.md`
-   - `references/retention-scripting-guide.md`
-5. Save & Publish to yourself. You now have a private 24/7 YouTube consultant in ChatGPT!
+#### Step 1: Clone or Open this Folder in Cursor
+Open `d:\youtube-skills-ai` in Cursor. The included [`.cursorrules`](adapters/cursor/.cursorrules) file will automatically guide Cursor.
 
-#### Method B: Portable Prompts (Zero Setup)
-Open [`portable-prompts/`](portable-prompts/) (e.g., [`video-seo.md`](portable-prompts/video-seo.md) or [`hook-generation.md`](portable-prompts/hook-generation.md)), copy the text, and paste it into any ChatGPT conversation.
+#### Step 2: Connect the MCP Server (For Live YouTube Data)
+1. Press `Ctrl + Shift + J` (or `Cmd + Shift + J`) to open Cursor Settings.
+2. Navigate to **Features ➔ MCP**.
+3. Click **+ Add New MCP Server**:
+   - **Type:** `command`
+   - **Name:** `youtube-agent-kit`
+   - **Command:** `python d:/youtube-skills-ai/mcp-server/server.py`
+   - **Environment Variable (Optional):** `YOUTUBE_API_KEY=your_key_here`
+4. A green dot will appear confirming live tools (`search_videos`, `get_channel_details`, `validate_metadata`) are connected.
 
----
-
-### 4. 🟧 Claude (Claude Code & Desktop)
-
-* **Claude Code (CLI):**
-  Run the automated installer:
-  ```powershell
-  .\install.ps1
-  ```
-  Then invoke commands directly in your terminal:
-  ```bash
-  claude
-  /youtube audit @channel
-  /youtube seo "Building AI Agents"
-  /youtube hook "Personal Finance in 2026"
-  ```
-* **Claude Desktop:**
-  Add to your `claude_desktop_config.json`:
-  ```json
-  {
-    "mcpServers": {
-      "youtube-agent-kit": {
-        "command": "python",
-        "args": ["d:/youtube-skills-ai/mcp-server/server.py"],
-        "env": {
-          "YOUTUBE_API_KEY": "YOUR_API_KEY_HERE"
-        }
-      }
-    }
-  }
-  ```
+#### Step 3: How to Prompt Cursor
+In Cursor Composer (`Ctrl + I` or `Cmd + I`):
+```text
+@AGENTS.md Use the video-seo skill for my next video on "Top AI Workflow Tools in 2026"
+```
 
 ---
 
-### 5. 🦅 Grok (X / Web)
+### 3. 🟣 If you use Google Antigravity
 
-Grok specializes in viral angles, social discourse, and trending patterns:
-1. Copy the instructions from [`portable-prompts/hook-generation.md`](portable-prompts/hook-generation.md).
-2. Paste into Grok with your topic:
-   > *"Topic: 3 AI Tools that automate manual workflows. Generate 5 psychological hook scripts following the instructions above."*
+Antigravity natively implements the open [Agent Skills specification](https://agentskills.io/).
+
+#### How to Use:
+1. Open this repository folder in Antigravity.
+2. Antigravity automatically detects all 14 skills in [`skills/`](skills/) and reads [`AGENTS.md`](AGENTS.md).
+3. Type in chat:
+   > *"Run `hook-generation` for a video about learning Python with AI."*
+   > *"Validate my metadata for 'How to Build Agents' using `validate_metadata.py`."*
+4. To enable live API tools, add `mcp-server/server.py` to your Antigravity `mcp_config.json`.
 
 ---
 
-### 6. 🌊 Windsurf / Cline / Roo Code
+### 4. 🟧 If you use Claude (Claude Code & Claude Desktop)
 
-Add to your `cline_mcp_settings.json` or Windsurf MCP panel:
+#### Claude Code (CLI Terminal):
+Run the one-line setup in PowerShell:
+```powershell
+.\install.ps1
+```
+Now use native slash commands inside your Claude terminal session:
+```bash
+claude
+/youtube audit @channelhandle
+/youtube seo "Best Coding Practices"
+/youtube hook "AI Automation"
+```
+
+#### Claude Desktop App:
+Add to `%APPDATA%\Claude\claude_desktop_config.json`:
 ```json
 {
   "mcpServers": {
@@ -219,7 +156,7 @@ Add to your `cline_mcp_settings.json` or Windsurf MCP panel:
       "command": "python",
       "args": ["d:/youtube-skills-ai/mcp-server/server.py"],
       "env": {
-        "YOUTUBE_API_KEY": "YOUR_API_KEY_HERE"
+        "YOUTUBE_API_KEY": "YOUR_KEY_HERE"
       }
     }
   }
@@ -228,109 +165,131 @@ Add to your `cline_mcp_settings.json` or Windsurf MCP panel:
 
 ---
 
-### 7. 📦 Python CLI & Global Package
+### 5. 🦅 If you use Grok (X / Web)
 
-Install the entire toolkit globally via Git:
-```bash
-pip install git+https://github.com/vbreddymora/youtube-agent-kit.git
-```
+1. Open [`portable-prompts/hook-generation.md`](portable-prompts/hook-generation.md).
+2. Copy the text into Grok and append your video topic:
+   > *"Topic: 3 Tools that automate busywork. Follow the rules above and write 5 psychological hook scripts."*
+3. Grok will strictly return the 5 distinct angles (Shock, Problem Agitation, Story, Curiosity Gap, and Social Proof) without conversational filler.
 
-Run automated Short video generation:
-```bash
-python scripts/generate_short_video.py
+---
+
+### 6. 🌊 If you use Windsurf / Cline / Roo Code
+
+Add to your `cline_mcp_settings.json` or Windsurf MCP tab:
+```json
+{
+  "mcpServers": {
+    "youtube-agent-kit": {
+      "command": "python",
+      "args": ["d:/youtube-skills-ai/mcp-server/server.py"],
+      "env": {
+        "YOUTUBE_API_KEY": "YOUR_KEY_HERE"
+      }
+    }
+  }
+}
 ```
 
 ---
 
-## 🎯 The 14 Canonical Agent Skills
+## 📚 The 14 Canonical Skills Cheatsheet
 
-Each skill is an open-standard module located in [`skills/`](skills/) containing strict procedural instructions, benchmark references, and output schemas:
+Whenever you interact with any AI agent, use these exact prompt triggers:
 
-| # | Skill Name | Path | What It Does | Prompt Example |
-|:---:|:---|:---|:---|:---|
-| **1** | **Channel Audit** | [`skills/channel-audit/`](skills/channel-audit/SKILL.md) | 4-track audit (SEO, velocity, content gaps, RPM) with 30-day sprint plan. | *"Audit channel @Veritasium using the channel-audit skill."* |
-| **2** | **Video SEO** | [`skills/video-seo/`](skills/video-seo/SKILL.md) | 3 title variants, 5000-char description, tags < 500 chars, chapters, and JSON-LD schema. | *"Prepare complete SEO metadata for 'How to Build AI Agents'."* |
-| **3** | **Script Writing** | [`skills/script-writing/`](skills/script-writing/SKILL.md) | Retention-engineered long-form script with 30s hook triad and 60s pattern interrupts. | *"Write an 8-minute educational script on Quantum Computing."* |
-| **4** | **Hook Generation** | [`skills/hook-generation/`](skills/hook-generation/SKILL.md) | 5 psychological 30s hook variants (Shock, Agitation, Story, Curiosity, Proof). | *"Generate 5 viral hooks for a video about side hustles."* |
-| **5** | **Thumbnail Planning**| [`skills/thumbnail-planning/`](skills/thumbnail-planning/SKILL.md)| Visual hierarchy, color hex palette, title-thumbnail synergy, and 3 A/B test briefs. | *"Plan 3 high-CTR thumbnail concepts for a Coding Tutorial."* |
-| **6** | **Shorts Optimization**| [`skills/shorts-optimization/`](skills/shorts-optimization/SKILL.md)| 9:16 vertical video script with visual cuts every 3s, Viewed vs Swiped Away focus. | *"Script a 50s viral Short on 3 AI automation tools."* |
-| **7** | **Competitor Analysis**| [`skills/competitor-analysis/`](skills/competitor-analysis/SKILL.md)| Discovers 3x+ view outlier videos, keyword vacancies, and audience sentiment. | *"Analyze top competitors in the personal finance niche."* |
-| **8** | **Video Ideation** | [`skills/video-ideation/`](skills/video-ideation/SKILL.md) | 10 ranked video ideas with search vs browse traffic strategies and thumbnail angles. | *"Give me 10 high-retention video ideas for a tech channel."* |
-| **9** | **Content Strategy** | [`skills/content-strategy/`](skills/content-strategy/SKILL.md) | Hub/Hero/Help content pillars, channel positioning statement, 90-day roadmap. | *"Build a 90-day growth strategy for a new B2B SaaS channel."* |
-| **10**| **Content Calendar** | [`skills/content-calendar/`](skills/content-calendar/SKILL.md) | Monthly calendar with optimal publish windows and seasonal CPM timings. | *"Create a 4-week publishing calendar for November."* |
-| **11**| **Analytics Analysis**| [`skills/analytics-analysis/`](skills/analytics-analysis/SKILL.md)| Funnel diagnosis (Impressions ➔ CTR ➔ AVD), retention drop-off fixes. | *"Diagnose my retention curve where 40% drops at 0:30."* |
-| **12**| **Content Repurposing**| [`skills/content-repurposing/`](skills/content-repurposing/SKILL.md)| Converts 1 long-form video into 5 Shorts, LinkedIn post, X thread, and newsletter. | *"Repurpose this video transcript into 3 Shorts and an X thread."* |
-| **13**| **Monetization** | [`skills/monetization/`](skills/monetization/SKILL.md) | 7-stream revenue gap analysis, sponsorship rate card, affiliate matrix. | *"Calculate sponsorship rates for a channel with 50K avg views."* |
-| **14**| **Upload Metadata** | [`skills/upload-metadata/`](skills/upload-metadata/SKILL.md) | Copy-paste-ready Studio packaging: final title, description, tags, and settings. | *"Assemble upload package for video #102."* |
+| Skill | Directory Link | What You Get | Exact Prompt to Copy |
+|:---|:---|:---|:---|
+| **Hook Generation** | [`skills/hook-generation`](skills/hook-generation/SKILL.md) | 5 psychological 30s openers (Shock, Pain, Story, Curiosity, Proof) | *"Use `hook-generation` to write 5 openers for [Topic]."* |
+| **Video SEO** | [`skills/video-seo`](skills/video-seo/SKILL.md) | 3 title variants, 5000-char description, tags, chapters, schema | *"Use `video-seo` to optimize metadata for [Topic]."* |
+| **Shorts Optimization** | [`skills/shorts-optimization`](skills/shorts-optimization/SKILL.md) | 9:16 vertical script with cuts every 3s & seamless loop design | *"Script a 50-second Short on [Topic] using `shorts-optimization`."* |
+| **Script Writing** | [`skills/script-writing`](skills/script-writing/SKILL.md) | Long-form retention script with 30s hook triad & pattern interrupts | *"Write an 8-minute educational script on [Topic]."* |
+| **Thumbnail Planning** | [`skills/thumbnail-planning`](skills/thumbnail-planning/SKILL.md) | Visual layout brief, color hex palette, and 3 A/B test variations | *"Plan 3 high-CTR thumbnail concepts for [Topic]."* |
+| **Competitor Analysis** | [`skills/competitor-analysis`](skills/competitor-analysis/SKILL.md) | Finds 3x+ view outlier videos, keyword gaps, and comment mining | *"Run `competitor-analysis` on [Niche / Competitor Channel]."* |
+| **Channel Audit** | [`skills/channel-audit`](skills/channel-audit/SKILL.md) | 4-track audit (SEO, performance, content, monetization) + 30-day plan | *"Audit channel [@Handle] using the `channel-audit` skill."* |
+| **Video Ideation** | [`skills/video-ideation`](skills/video-ideation/SKILL.md) | 10 ranked video ideas with search vs browse traffic strategies | *"Generate 10 high-retention video concepts for [Niche]."* |
+| **Content Strategy** | [`skills/content-strategy`](skills/content-strategy/SKILL.md) | Hub/Hero/Help content pillars and 90-day growth roadmap | *"Build a 90-day content strategy for [Channel Goal]."* |
+| **Content Calendar** | [`skills/content-calendar`](skills/content-calendar/SKILL.md) | Monthly calendar with optimal publish windows & seasonal CPM timing | *"Generate a 4-week content calendar for [Month]."* |
+| **Analytics Analysis** | [`skills/analytics-analysis`](skills/analytics-analysis/SKILL.md) | Diagnoses retention drop-offs, CTR bottlenecks, and fixes | *"Diagnose my retention curve where 40% drops at 0:30."* |
+| **Content Repurposing** | [`skills/content-repurposing`](skills/content-repurposing/SKILL.md) | Turns 1 long-form video into 5 Shorts, X thread, LinkedIn post | *"Repurpose this transcript into 3 Shorts and an X thread."* |
+| **Monetization** | [`skills/monetization`](skills/monetization/SKILL.md) | 7-stream revenue gap analysis, sponsorship rate card, affiliate plan | *"Calculate sponsorship rates for [View Count / Niche]."* |
+| **Upload Metadata** | [`skills/upload-metadata`](skills/upload-metadata/SKILL.md) | Final copy-paste Studio upload package (title, desc, tags string) | *"Assemble the final upload package for video #[Number]."* |
 
 ---
 
-## 🎬 Autonomous Video Generation & Testing
+## 🎬 Autonomous Video Generation Engine
 
-This toolkit features built-in headless generation of real, high-retention vertical **1080x1920 MP4 video files**:
+This repository includes a built-in headless Python engine that converts scripts into **production-ready vertical 1080x1920 MP4 videos**:
 
 ```bash
-# 1. Generate full Short with Neural TTS & Multi-scene FFmpeg rendering
+# Render complete vertical MP4 video with Studio Neural Voiceover:
 python scripts/generate_short_video.py
 ```
 
-### What this produces:
-1. **Studio Neural Voiceover (`voiceover_neural.mp3`):** Synthesized using Microsoft `edge-tts` (Christopher Neural) with zero robotic artifacts.
-2. **Burned Hormozi-Style Subtitles:** High-contrast, bold yellow captions with dark borders burned directly onto the video frames.
-3. **Multi-Scene Pacing:** Changes scene every 3 to 10 seconds to maintain high viewer retention.
-4. **Output Video:** Standard 1080x1920 H.264 MP4 saved directly at [`output_short.mp4`](output_short.mp4).
+### What the Engine Does:
+1. **Studio Neural Narration:** Uses Microsoft `edge-tts` to synthesize human-like voiceover (`voiceover_neural.mp3`) with zero robotic artifacts.
+2. **Multi-Scene Transitions:** Composites 5 distinct visual scenes, cutting every 3 to 10 seconds to maintain high viewer retention.
+3. **Burned Hormozi-Style Captions:** Automatically burns high-contrast yellow/white bold subtitles onto the MP4 frames with dark strokes.
+4. **Export:** Generates standard H.264/AAC 1080x1920 vertical video saved at [`output_short.mp4`](output_short.mp4).
 
-### Interactive 9:16 Simulator
-Preview pacing and captions in your browser before uploading:
+### Interactive Local Simulator
+Before uploading, test your pacing, voiceover, and captions inside any web browser:
 ```powershell
 Start-Process "preview_short.html"
 ```
 
 ---
 
-## 🛡️ Local Deterministic Validation
+## 🛡️ Deterministic Metadata Validator
 
-Never get penalized by YouTube algorithm caps or mobile truncation. Validate any metadata instantly without an API key:
+Avoid YouTube algorithm penalties, mobile title truncation, and hashtag shadowbans. Run our zero-dependency validator locally:
 
 ```bash
 python scripts/validate_metadata.py \
   --title "How to Build an AI Agent in 2026 (Step-by-Step)" \
-  --description "Full complete tutorial for developers. #AIAgents #Python #Tutorial" \
-  --tags "ai agents, python ai, autonomous agents, tutorial 2026" \
-  --chapters "0:00 - Intro\n1:30 - Setup\n5:00 - Code\n12:00 - Testing"
+  --description "In this tutorial, you will learn how to build autonomous AI agents from scratch. #AIAgents #Python #Tutorial" \
+  --tags "ai agents, python ai, autonomous agents, ai tutorial 2026" \
+  --chapters "0:00 - Introduction\n1:30 - Setting up Environment\n5:00 - Writing the Agent Code\n12:00 - Testing and Output"
 ```
 
-### Checks Performed:
-- **Title Length:** 50-70 characters (optimal for mobile without truncation; flags > 100 chars).
-- **Description:** First 150 chars above-the-fold summary verification; caps at 5,000 chars.
-- **Tags:** Total character length under the 500-character YouTube limit.
-- **Hashtags:** Validates 3-5 recommended tags (flags spam if > 15 hashtags).
-- **Chapters:** Verifies mandatory `00:00` start, minimum of 3 chapters, and clean formatting.
+### Automatic Checks:
+- ✅ **Title:** 50-70 characters (optimal for mobile feeds; flags truncation if > 70, errors if > 100).
+- ✅ **Description:** Verifies first 150 characters contain hook & keywords (above "Show more").
+- ✅ **Tags:** Verifies total characters remain under YouTube's strict 500-character cap.
+- ✅ **Hashtags:** Enforces 3-5 tags (warns if > 5; errors if > 15 which causes YouTube to ignore all tags).
+- ✅ **Chapters:** Enforces mandatory `00:00` start, minimum of 3 chapters, and clean formatting.
 
 ---
 
-## 🔒 Security & Quota Management
+## 🧪 Automated Unit Tests
 
-- **Zero Hardcoded Secrets:** Credentials and tokens are read strictly from environment variables (`YOUTUBE_API_KEY`) and are ignored in `.gitignore`.
-- **API Quota Protection:** Tracks daily YouTube Data API v3 unit usage against the 10,000-unit quota limit.
-  ```bash
-  python scripts/utils/quota_tracker.py --check
-  ```
-- **Read-Only Scopes:** Default API integrations query public data or read-only Analytics scopes.
-
----
-
-## 🧪 Testing
-
-The repository includes a comprehensive unit test suite covering path resolution, quota tracking, and deterministic metadata validation:
-
+Verify the toolkit's core algorithms, path resolution, and quota tracking:
 ```bash
 python -m unittest discover tests
 ```
-*(Result: 13 tests pass in < 0.05s)*
+*(Result: 13 unit tests pass in < 0.05 seconds)*
+
+---
+
+## 🔒 Security & Safe Credentials
+
+- **Zero Hardcoded Keys:** YouTube API keys and OAuth tokens are never committed to version control.
+- **Quota Safeguards:** Built-in tracker checks consumption against the 10,000-unit daily limit:
+  ```bash
+  python scripts/utils/quota_tracker.py --check
+  ```
+- **Read-Only Scopes:** Default integrations use public YouTube endpoints or read-only Analytics scopes.
+
+---
+
+## 📦 Global Pip Installation
+
+Install directly into any Python environment without manual cloning:
+```bash
+pip install git+https://github.com/vbreddymora/youtube-agent-kit.git
+```
 
 ---
 
 ## 📄 License
 
-Distributed under the **MIT License**. Free for individual creators, media agencies, and software developers.
+Distributed under the **MIT License**. Free for individual creators, agencies, and open-source developers.
