@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WorkflowOutput",
+  "description": "Standardized output structure for YouTube skills and workflows",
+  "type": "object",
+  "required": ["workflow_name", "channel_classification", "deliverables", "quality_checks", "next_steps"],
+  "properties": {
+    "workflow_name": { "type": "string" },
+    "channel_classification": {
+      "type": "object",
+      "required": ["channel_type", "template_used"],
+      "properties": {
+        "channel_type": { "type": "string" },
+        "template_used": { "type": "string" }
+      }
+    },
+    "deliverables": {
+      "type": "object",
+      "description": "Workflow-specific generated outputs (reports, drafts, metadata, or schedules)"
+    },
+    "quality_checks": {
+      "type": "object",
+      "required": ["specificity_passed", "data_grounding_passed", "completeness_passed"],
+      "properties": {
+        "specificity_passed": { "type": "boolean" },
+        "data_grounding_passed": { "type": "boolean" },
+        "completeness_passed": { "type": "boolean" },
+        "notes": { "type": "string" }
+      }
+    },
+    "assumptions_and_limitations": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "next_steps": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Suggested follow-up actions and relevant next sub-skills"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WorkflowInput",
+  "description": "Standardized context-gathering inputs required across YouTube workflows",
+  "type": "object",
+  "required": ["channel_niche", "channel_size_tier", "primary_goal"],
+  "properties": {
+    "channel_niche": {
+      "type": "string",
+      "description": "Specific niche (e.g., 'budget Android phone reviews' rather than generic 'tech')"
+    },
+    "channel_size_tier": {
+      "type": "string",
+      "enum": ["New (<1K)", "Growing (1K-10K)", "Established (10K-100K)", "Authority (100K+)"]
+    },
+    "primary_goal": {
+      "type": "string",
+      "enum": ["Growth", "Monetisation", "Brand Authority", "Audience Engagement"]
+    },
+    "channel_url_or_handle": {
+      "type": "string",
+      "description": "Required for channel-audit, analytics-analysis, and competitor-analysis"
+    },
+    "target_video_topic": {
+      "type": "string",
+      "description": "Topic or target keyword for video-specific workflows"
+    },
+    "video_transcript": {
+      "type": "string",
+      "description": "Raw text or subtitle transcript of video"
+    }
+  }
+}

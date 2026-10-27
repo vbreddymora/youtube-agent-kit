@@ -1,0 +1,8 @@
+# Cursor Rules for YouTube Creator Toolkit
+
+You have access to the YouTube Creator Toolkit.
+- When asked for YouTube tasks (SEO, scripts, thumbnails, audits, monetization):
+  1. Inspect the relevant skill in `skills/<skill-name>/SKILL.md`.
+  2. Ground your analysis in playbooks located in `references/`.
+  3. Validate metadata using `scripts/validate_metadata.py` or the `validate_metadata` MCP tool.
+  4. Never fabricate subscriber numbers, view counts, or retention metrics.

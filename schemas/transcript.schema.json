@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TranscriptData",
+  "description": "Output schema for fetch_transcript.py",
+  "type": "object",
+  "required": ["video_id", "language", "method", "fetched_at"],
+  "properties": {
+    "video_id": { "type": "string" },
+    "language": { "type": "string" },
+    "method": { "type": "string" },
+    "segment_count": { "type": "integer", "minimum": 0 },
+    "text": { "type": "string" },
+    "segments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["start", "text"],
+        "properties": {
+          "start": { "type": "string" },
+          "text": { "type": "string" }
+        }
+      }
+    },
+    "fetched_at": { "type": "string", "format": "date-time" },
+    "_cached": { "type": "boolean" }
+  }
+}

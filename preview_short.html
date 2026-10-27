@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Short - Modern High-Retention Player</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: radial-gradient(circle at center, #131722 0%, #07090e 100%);
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+    .header-tag {
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      color: #38bdf8;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .header-tag::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: #ef4444;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #ef4444;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+    .phone-wrapper {
+      position: relative;
+      width: 360px;
+      height: 640px;
+      border-radius: 44px;
+      background: #000;
+      padding: 10px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 50px rgba(56, 189, 248, 0.15);
+      border: 3px solid rgba(255, 255, 255, 0.1);
+    }
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      border-radius: 34px;
+      overflow: hidden;
+      position: relative;
+      background: #05070a;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    /* Dynamic Scene Backgrounds */
+    .scene-layer {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out, transform 8s ease;
+      transform: scale(1);
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+    }
+    .scene-layer.active {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    /* Scene 1: Alert */
+    .scene-1 {
+      background: radial-gradient(circle at center, rgba(239, 68, 68, 0.3) 0%, #07090e 80%), url('cover.jpg') center/cover;
+      background-blend-mode: overlay;
+    }
+    /* Scene 2: n8n Node Workflow */
+    .scene-2 {
+      background: radial-gradient(circle at center, rgba(14, 165, 233, 0.25) 0%, #080c14 85%);
+    }
+    .workflow-card {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      border-radius: 16px;
+      padding: 20px;
+      width: 85%;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      margin-top: -60px;
+    }
+    .node-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      margin: 16px 0;
+      position: relative;
+    }
+    .node {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: #1e293b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      border: 2px solid #38bdf8;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+      animation: bounce 2s infinite alternate;
+    }
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-6px); }
+    }
+    .node-arrow {
+      color: #38bdf8;
+      font-weight: bold;
+      animation: glow 1s infinite alternate;
+    }
+    @keyframes glow {
+      from { opacity: 0.4; }
+      to { opacity: 1; }
+    }
+    /* Scene 3: Agentic Browser */
+    .scene-3 {
+      background: radial-gradient(circle at center, rgba(168, 85, 247, 0.25) 0%, #07090e 85%);
+    }
+    .browser-sim {
+      width: 90%;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      border-radius: 16px;
+      padding: 16px;
+      margin-top: -60px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+    .browser-bar {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; }
+    .dot-r { background: #ef4444; }
+    .dot-y { background: #eab308; }
+    .dot-g { background: #22c55e; }
+    .command-prompt {
+      background: #020617;
+      padding: 10px;
+      border-radius: 8px;
+      font-family: monospace;
+      color: #a855f7;
+      font-size: 0.85rem;
+      text-align: left;
+    }
+    /* Scene 4: DocuParse */
+    .scene-4 {
+      background: radial-gradient(circle at center, rgba(34, 197, 94, 0.25) 0%, #07090e 85%);
+    }
+    .doc-stat {
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: #22c55e;
+      text-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
+    }
+    /* YouTube Shorts UI Overlays */
+    .shorts-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 16px;
+    }
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    }
+    /* Right Action Bar (Shorts Icons) */
+    .action-bar {
+      position: absolute;
+      right: 12px;
+      bottom: 90px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      pointer-events: auto;
+    }
+    .action-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      color: #fff;
+      cursor: pointer;
+    }
+    .action-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: transform 0.2s;
+    }
+    .action-item:hover .action-icon {
+      transform: scale(1.1);
+    }
+    .action-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+    }
+    .sound-disc {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid #38bdf8;
+      background: #0f172a url('cover.jpg') center/cover;
+      animation: spin 4s linear infinite;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    /* Bottom Creator Info & Captions */
+    .bottom-info {
+      position: absolute;
+      left: 16px;
+      right: 70px;
+      bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .channel-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.8rem;
+    }
+    .handle {
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    }
+    .subscribe-btn {
+      background: #ef4444;
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+    }
+    /* Hormozi-Style Pop Captions (Dead Center) */
+    .caption-hero {
+      position: absolute;
+      top: 48%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      text-align: center;
+      z-index: 20;
+      pointer-events: none;
+    }
+    .pop-word {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: #facc15;
+      text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 8px 20px rgba(0,0,0,0.9);
+      line-height: 1.15;
+      animation: popIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .pop-word.cyan { color: #38bdf8; }
+    .pop-word.white { color: #ffffff; }
+    .pop-word.red { color: #ef4444; }
+    .pop-sub {
+      display: block;
+      margin-top: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #ffffff;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
+    @keyframes popIn {
+      0% { transform: scale(0.7); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    /* Controls Bar outside phone */
+    .external-controls {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      width: 360px;
+    }
+    .play-master-btn {
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #fff;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.5);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .play-master-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.7);
+    }
+    .scrubber {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 3px;
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .scrubber-fill {
+      width: 0%;
+      height: 100%;
+      background: #38bdf8;
+      transition: width 0.1s linear;
+    }
+    .time-lbl {
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-tag">Live Short Preview • High Retention Mode</div>
+
+  <div class="phone-wrapper">
+    <div class="phone-screen" id="phoneScreen">
+
+      <!-- Scene 1: Hook Alert -->
+      <div class="scene-layer scene-1 active" id="scene1">
+        <div style="font-size: 3rem; margin-bottom: 12px;">🚨</div>
+        <div style="font-size: 1.6rem; font-weight: 900; color: #ef4444; text-transform: uppercase; text-shadow: 0 0 20px #ef4444;">
+          Stop Busywork
+        </div>
+      </div>
+
+      <!-- Scene 2: n8n Node Workflow -->
+      <div class="scene-layer scene-2" id="scene2">
+        <div class="workflow-card">
+          <div style="font-size: 0.8rem; color: #38bdf8; font-weight: 700; margin-bottom: 8px;">TOOL #1 • ZERO-CODE AGENT</div>
+          <div style="font-size: 1.3rem; font-weight: 900; margin-bottom: 14px;">n8n Autonomous Graph</div>
+          <div class="node-row">
+            <div class="node">📧</div>
+            <div class="node-arrow">➔</div>
+            <div class="node">⚡</div>
+            <div class="node-arrow">➔</div>
+            <div class="node">📊</div>
+          </div>
+          <div style="font-size: 0.75rem; color: #94a3b8;">100% Free • Local Execution</div>
+        </div>
+      </div>
+
+      <!-- Scene 3: Agentic Browser -->
+      <div class="scene-layer scene-3" id="scene3">
+        <div class="browser-sim">
+          <div class="browser-bar">
+            <div class="dot dot-r"></div>
+            <div class="dot dot-y"></div>
+            <div class="dot dot-g"></div>
+          </div>
+          <div style="font-size: 0.8rem; color: #c084fc; font-weight: 700; margin-bottom: 8px;">TOOL #2 • BROWSER AI</div>
+          <div class="command-prompt">
+            > ai.browse("Find 20 leads & submit form")<br>
+            <span style="color: #4ade80;">✔ Auto-clicking buttons...</span><br>
+            <span style="color: #38bdf8;">✔ Task Completed in 6s.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene 4: DocuParse -->
+      <div class="scene-layer scene-4" id="scene4">
+        <div style="font-size: 0.8rem; color: #22c55e; font-weight: 700; margin-bottom: 6px;">TOOL #3 • 500 INVOICES</div>
+        <div class="doc-stat">10 SECS</div>
+        <div style="font-size: 1.1rem; font-weight: 800; color: #ffffff; margin-top: 8px;">100% Manual Data Entry Eliminated</div>
+      </div>
+
+      <!-- Dynamic Hormozi-Style Pop Captions -->
+      <div class="caption-hero">
+        <div class="pop-word" id="captionWord">STOP BUSYWORK!</div>
+        <span class="pop-sub" id="captionDetail">Tap Play to test the audio & visual cuts</span>
+      </div>
+
+      <!-- Shorts UI Elements -->
+      <div class="shorts-overlay">
+        <div class="top-nav">
+          <span>Shorts</span>
+          <span>⚡ 1080x1920</span>
+        </div>
+
+        <div class="action-bar">
+          <div class="action-item">
+            <div class="action-icon">👍</div>
+            <span class="action-label">148K</span>
+          </div>
+          <div class="action-item">
+            <div class="action-icon">💬</div>
+            <span class="action-label">1.4K</span>
+          </div>
+          <div class="action-item">
+            <div class="action-icon">↗</div>
+            <span class="action-label">Share</span>
+          </div>
+          <div class="sound-disc"></div>
+        </div>
+
+        <div class="bottom-info">
+          <div class="channel-row">
+            <div class="avatar">AI</div>
+            <span class="handle">@TechAutomate</span>
+            <span class="subscribe-btn">Subscribe</span>
+          </div>
+          <div style="font-size: 0.8rem; color: #e2e8f0; text-shadow: 0 1px 3px rgba(0,0,0,0.9);">
+            3 AI Tools that automate manual workflows in 2026 🔥
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="external-controls">
+    <div class="scrubber" id="scrubber">
+      <div class="scrubber-fill" id="scrubberFill"></div>
+    </div>
+    <div class="time-lbl" id="timeLbl">0:00 / 0:00</div>
+    <button class="play-master-btn" id="playBtn">
+      <span id="playIcon">▶</span> Play Short Simulation
+    </button>
+  </div>
+
+  <audio id="audio" src="voiceover.wav"></audio>
+
+  <script>
+    const audio = document.getElementById('audio');
+    const playBtn = document.getElementById('playBtn');
+    const playIcon = document.getElementById('playIcon');
+    const scrubberFill = document.getElementById('scrubberFill');
+    const scrubber = document.getElementById('scrubber');
+    const timeLbl = document.getElementById('timeLbl');
+
+    const scene1 = document.getElementById('scene1');
+    const scene2 = document.getElementById('scene2');
+    const scene3 = document.getElementById('scene3');
+    const scene4 = document.getElementById('scene4');
+
+    const captionWord = document.getElementById('captionWord');
+    const captionDetail = document.getElementById('captionDetail');
+
+    // High Retention Timeline
+    const timeline = [
+      { start: 0, end: 4, scene: 1, word: "STOP BUSYWORK!", color: "red", detail: "Still doing manual data entry in 2026?" },
+      { start: 4, end: 8, scene: 1, word: "WASTING 15 HOURS", color: "cyan", detail: "Every single week on repetitive tasks" },
+      { start: 8, end: 17, scene: 2, word: "TOOL 1: n8n", color: "cyan", detail: "Free, autonomous visual workflow graph" },
+      { start: 17, end: 27, scene: 3, word: "TOOL 2: AGENTIC AI", color: "white", detail: "It clicks buttons & fills forms automatically" },
+      { start: 27, end: 38, scene: 4, word: "TOOL 3: DOCUPARSE", color: "cyan", detail: "Processes 500 invoices into Excel in 10s" },
+      { start: 38, end: 48, scene: 1, word: "WORK SMARTER", color: "white", detail: "Let autonomous AI handle the boring tasks" },
+      { start: 48, end: 99, scene: 2, word: "COMMENT BELOW!", color: "red", detail: "For the complete setup guide 🚀" }
+    ];
+
+    playBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        playIcon.innerText = "⏸";
+      } else {
+        audio.pause();
+        playIcon.innerText = "▶";
+      }
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      const cur = audio.currentTime;
+      const dur = audio.duration || 1;
+      scrubberFill.style.width = (cur / dur * 100) + '%';
+
+      const curM = Math.floor(cur / 60);
+      const curS = Math.floor(cur % 60).toString().padStart(2, '0');
+      const durM = Math.floor(dur / 60);
+      const durS = Math.floor(dur % 60).toString().padStart(2, '0');
+      timeLbl.innerText = `${curM}:${curS} / ${durM}:${durS}`;
+
+      const active = timeline.find(t => cur >= t.start && cur < t.end);
+      if (active) {
+        // Switch Scenes
+        [scene1, scene2, scene3, scene4].forEach((s, idx) => {
+          if (idx + 1 === active.scene) {
+            s.classList.add('active');
+          } else {
+            s.classList.remove('active');
+          }
+        });
+
+        // Update Captions
+        captionWord.innerText = active.word;
+        captionWord.className = 'pop-word ' + active.color;
+        captionDetail.innerText = active.detail;
+      }
+    });
+
+    audio.addEventListener('ended', () => {
+      playIcon.innerText = "▶";
+      scrubberFill.style.width = '0%';
+    });
+
+    scrubber.addEventListener('click', (e) => {
+      const rect = scrubber.getBoundingClientRect();
+      const pos = (e.clientX - rect.left) / rect.width;
+      if (audio.duration) {
+        audio.currentTime = pos * audio.duration;
+      }
+    });
+  </script>
+</body>
+</html>

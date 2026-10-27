@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CompetitorSearchData",
+  "description": "Output schema for search_competitor_videos.py",
+  "type": "object",
+  "required": ["query", "result_count", "videos", "fetched_at"],
+  "properties": {
+    "query": { "type": "string" },
+    "channel_filter": { "type": ["string", "null"] },
+    "result_count": { "type": "integer", "minimum": 0 },
+    "videos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["video_id", "title", "channel_title", "views", "likes", "comments"],
+        "properties": {
+          "video_id": { "type": "string" },
+          "title": { "type": "string" },
+          "channel_title": { "type": "string" },
+          "channel_id": { "type": "string" },
+          "published_at": { "type": "string" },
+          "description": { "type": "string" },
+          "duration": { "type": ["string", "null"] },
+          "views": { "type": "integer", "minimum": 0 },
+          "likes": { "type": "integer", "minimum": 0 },
+          "comments": { "type": "integer", "minimum": 0 },
+          "engagement_rate_pct": { "type": "number", "minimum": 0 },
+          "vs_channel_avg": { "type": "number" },
+          "is_outlier": { "type": "boolean" },
+          "thumbnail": { "type": ["string", "null"], "format": "uri" }
+        }
+      }
+    },
+    "fetched_at": { "type": "string", "format": "date-time" },
+    "note": { "type": "string" }
+  }
+}

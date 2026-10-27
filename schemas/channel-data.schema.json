@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ChannelData",
+  "description": "Output schema for fetch_channel_data.py",
+  "type": "object",
+  "required": ["channel", "videos", "fetched_at"],
+  "properties": {
+    "channel": {
+      "type": "object",
+      "required": ["channel_id", "title", "subscriber_count", "total_views", "video_count"],
+      "properties": {
+        "channel_id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "custom_url": { "type": ["string", "null"] },
+        "published_at": { "type": "string", "format": "date-time" },
+        "country": { "type": ["string", "null"] },
+        "subscriber_count": { "type": "integer", "minimum": 0 },
+        "total_views": { "type": "integer", "minimum": 0 },
+        "video_count": { "type": "integer", "minimum": 0 },
+        "uploads_playlist": { "type": ["string", "null"] },
+        "keywords": { "type": "string" }
+      }
+    },
+    "videos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["video_id", "title", "published_at", "views", "likes", "comments"],
+        "properties": {
+          "video_id": { "type": "string" },
+          "title": { "type": "string" },
+          "published_at": { "type": "string" },
+          "description": { "type": "string" },
+          "duration": { "type": ["string", "null"] },
+          "views": { "type": "integer", "minimum": 0 },
+          "likes": { "type": "integer", "minimum": 0 },
+          "comments": { "type": "integer", "minimum": 0 },
+          "thumbnail": { "type": ["string", "null"], "format": "uri" }
+        }
+      }
+    },
+    "fetched_at": { "type": "string", "format": "date-time" },
+    "quota_consumed": { "type": "integer", "minimum": 0 },
+    "_cached": { "type": "boolean" }
+  }
+}
