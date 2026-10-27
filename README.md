@@ -48,9 +48,21 @@ graph LR
 
 ---
 
-## 🎯 Choose Your AI Tool: How to Access (Step-by-Step)
+---
 
-Select the tool you use below for crystal-clear, zero-confusion setup:
+## 🎯 Supported AI Tools & Environments
+
+<p align="center">
+  <a href="#1--if-you-use-chatgpt-web--mobile"><img src="https://img.shields.io/badge/ChatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white" alt="ChatGPT" height="36" /></a>
+  <a href="#2--if-you-use-cursor-ide"><img src="https://img.shields.io/badge/Cursor-000000?style=for-the-badge&logo=cursor&logoColor=white" alt="Cursor" height="36" /></a>
+  <a href="#4--if-you-use-claude-claude-code--claude-desktop"><img src="https://img.shields.io/badge/Claude-D97706?style=for-the-badge&logo=anthropic&logoColor=white" alt="Claude" height="36" /></a>
+  <a href="#3--if-you-use-google-antigravity"><img src="https://img.shields.io/badge/Google%20Antigravity-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Google Antigravity" height="36" /></a>
+  <a href="#5--if-you-use-grok-x--web"><img src="https://img.shields.io/badge/Grok%20(X)-000000?style=for-the-badge&logo=x&logoColor=white" alt="Grok" height="36" /></a>
+  <a href="#supported-ai-tools"><img src="https://img.shields.io/badge/Google%20Gemini-8E75B2?style=for-the-badge&logo=googlegemini&logoColor=white" alt="Gemini" height="36" /></a>
+  <a href="#6--if-you-use-windsurf--cline--roo-code"><img src="https://img.shields.io/badge/Windsurf-09B6A2?style=for-the-badge&logo=codeium&logoColor=white" alt="Windsurf" height="36" /></a>
+</p>
+
+Click any tool above to jump straight to its setup guide:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -63,7 +75,7 @@ Select the tool you use below for crystal-clear, zero-confusion setup:
 
 ---
 
-### 1. 🤖 If you use ChatGPT (Web & Mobile)
+### 1. If you use ChatGPT <img src="https://img.shields.io/badge/ChatGPT-74aa9c?style=flat-square&logo=openai&logoColor=white" height="20" />
 
 Standard ChatGPT cannot read local files directly. You have two easy ways to use this toolkit:
 
@@ -93,7 +105,7 @@ Don't want to create a GPT? Simply open our [`portable-prompts/`](portable-promp
 
 ---
 
-### 2. ⚡ If you use Cursor IDE
+### 2. If you use Cursor IDE <img src="https://img.shields.io/badge/Cursor-000000?style=flat-square&logo=cursor&logoColor=white" height="20" />
 
 Cursor integrates directly with our repository rules and live Model Context Protocol (MCP) server.
 
@@ -118,7 +130,7 @@ In Cursor Composer (`Ctrl + I` or `Cmd + I`):
 
 ---
 
-### 3. 🟣 If you use Google Antigravity
+### 3. If you use Google Antigravity <img src="https://img.shields.io/badge/Google%20Antigravity-4285F4?style=flat-square&logo=google&logoColor=white" height="20" />
 
 Antigravity natively implements the open [Agent Skills specification](https://agentskills.io/).
 
@@ -132,7 +144,7 @@ Antigravity natively implements the open [Agent Skills specification](https://ag
 
 ---
 
-### 4. 🟧 If you use Claude (Claude Code & Claude Desktop)
+### 4. If you use Claude <img src="https://img.shields.io/badge/Claude-D97706?style=flat-square&logo=anthropic&logoColor=white" height="20" />
 
 #### Claude Code (CLI Terminal):
 Run the one-line setup in PowerShell:
@@ -165,7 +177,7 @@ Add to `%APPDATA%\Claude\claude_desktop_config.json`:
 
 ---
 
-### 5. 🦅 If you use Grok (X / Web)
+### 5. If you use Grok <img src="https://img.shields.io/badge/Grok-000000?style=flat-square&logo=x&logoColor=white" height="20" />
 
 1. Open [`portable-prompts/hook-generation.md`](portable-prompts/hook-generation.md).
 2. Copy the text into Grok and append your video topic:
@@ -174,7 +186,7 @@ Add to `%APPDATA%\Claude\claude_desktop_config.json`:
 
 ---
 
-### 6. 🌊 If you use Windsurf / Cline / Roo Code
+### 6. If you use Windsurf / Cline / Roo Code <img src="https://img.shields.io/badge/Windsurf-09B6A2?style=flat-square&logo=codeium&logoColor=white" height="20" />
 
 Add to your `cline_mcp_settings.json` or Windsurf MCP tab:
 ```json
