@@ -22,6 +22,29 @@ Most creators waste **10+ hours every week** on painful manual tasks:
 
 ---
 
+## 🎬 50-Second Product Walkthrough & Explainer
+
+<div align="center">
+  <a href="docs/assets/explainer_demo.mp4">
+    <img src="docs/assets/explainer_preview.gif" alt="YouTube Agent Kit Step-by-Step Explainer Walkthrough" width="100%" style="border-radius: 12px; border: 1px solid #334155; box-shadow: 0 12px 36px rgba(0,0,0,0.5);" />
+  </a>
+  <br/><br/>
+  <p align="center">
+    <a href="docs/assets/explainer_demo.mp4"><b>▶ Click here to Play Full Video with Studio Audio (50s MP4)</b></a> &nbsp;•&nbsp; 
+    <sub>Zero AI cartoons • Real IDE & Terminal Workflows • 1080p Full HD</sub>
+  </p>
+  
+  <details>
+    <summary><b>🎥 Click to open Embedded In-Line HTML5 Video Player</b></summary>
+    <br/>
+    <video src="docs/assets/explainer_demo.mp4" controls="controls" width="100%" style="border-radius: 8px; max-width: 900px;">
+      Your browser does not support the video tag.
+    </video>
+  </details>
+</div>
+
+---
+
 ## 🗺️ How It Works (Visual Pipeline)
 
 ```mermaid

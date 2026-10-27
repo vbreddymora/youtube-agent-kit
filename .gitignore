@@ -45,6 +45,7 @@ token.json
 *.wav
 *.mp4
 *.mp3
+!docs/assets/*.mp4
 
 # Development files (not part of the skill)
 skill-forge/
